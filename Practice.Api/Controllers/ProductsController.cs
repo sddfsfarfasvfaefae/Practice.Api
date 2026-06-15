@@ -1,0 +1,26 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Practice.Api.Repositories;
+
+namespace Practice.Api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+    private readonly ProductRepository _repository;
+
+    public ProductsController(
+        ProductRepository repository)
+    {
+        _repository = repository;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetProducts()
+    {
+        var products =
+            await _repository.GetAllProducts();
+
+        return Ok(products);
+    }
+}

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Practice.Api/Practice.Api.csproj" />
+  <Project Path="Practice.WPF/Practice.WPF.csproj" />
+</Solution>

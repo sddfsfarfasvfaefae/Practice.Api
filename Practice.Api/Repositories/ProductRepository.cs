@@ -24,7 +24,7 @@ public class ProductRepository
         return await connection.QueryAsync<Product>(sql);
     }
 
-    public async Task AddProduct(
+    public async Task<int> AddProduct(
         string productName,
         string description)
     {
@@ -32,28 +32,30 @@ public class ProductRepository
 INSERT INTO products
 (
     product_name,
-    description,
     category_id,
     manufacturer_id,
     supplier_id,
+    description,
+    price,
     unit,
-    image_path
+    stock_quantity
 )
 VALUES
 (
     @ProductName,
+    1,
+    1,
+    1,
     @Description,
-    1,
-    1,
-    1,
+    1000,
     'пара',
-    ''
+    10
 );";
 
         using var connection =
             _context.CreateConnection();
 
-        await connection.ExecuteAsync(
+        return await connection.ExecuteAsync(
             sql,
             new
             {

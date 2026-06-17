@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
+    <Page Update="Views\AddProductWindow.xaml">
+      <Generator></Generator>
+    </Page>
   </ItemGroup>
 
 </Project>

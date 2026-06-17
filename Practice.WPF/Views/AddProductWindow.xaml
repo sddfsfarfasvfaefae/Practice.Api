@@ -1,0 +1,23 @@
+﻿<Window x:Class="Practice.WPF.AddProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Добавление товара"
+        Height="250"
+        Width="400" FontFamily="Times New Roman" FontSize="14">
+
+    <StackPanel Margin="20" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}">
+
+        <TextBlock Text="Название товара"/>
+        <TextBox x:Name="NameBox"/>
+
+        <TextBlock Text="Описание"
+                   Margin="0,10,0,0"/>
+        <TextBox x:Name="DescriptionBox"/>
+
+        <Button Content="Сохранить"
+                Margin="0,20,0,0"
+                Click="SaveButton_Click"/>
+
+    </StackPanel>
+
+</Window>

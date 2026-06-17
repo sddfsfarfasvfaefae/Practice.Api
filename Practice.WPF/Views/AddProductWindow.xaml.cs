@@ -10,7 +10,6 @@ public partial class AddProductWindow : Window
     public AddProductWindow()
     {
         InitializeComponent();
-
         _apiService = new ApiService();
     }
 
@@ -25,15 +24,12 @@ public partial class AddProductWindow : Window
 
         if (result)
         {
-            MessageBox.Show(
-                "Товар добавлен");
-
+            MessageBox.Show("Товар добавлен");
             Close();
         }
         else
         {
-            MessageBox.Show(
-                "Ошибка добавления");
+            MessageBox.Show("Ошибка добавления");
         }
     }
 }

@@ -7,31 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid>
+        <Grid Background="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}">
             <StackPanel Width="300"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
 
                 <TextBlock Text="Авторизация"
-                   FontSize="24"
+                   FontSize="30"
                    Margin="0 0 0 20"
-                   HorizontalAlignment="Center"/>
+                   HorizontalAlignment="Center" FontFamily="Times New Roman" FontStyle="Italic"/>
 
-                <TextBlock Text="Логин"/>
+                <TextBlock Text="Логин" FontSize="16" FontFamily="Verdana"/>
 
                 <TextBox x:Name="LoginBox"
                  Height="30"
-                 Margin="0 0 0 10" TextChanged="LoginBox_TextChanged"/>
+                 Margin="0 0 0 10" TextChanged="LoginBox_TextChanged" Background="#4CBBBBBB"/>
 
-                <TextBlock Text="Пароль"/>
+                <TextBlock Text="Пароль" FontFamily="Verdana" FontSize="16"/>
 
                 <PasswordBox x:Name="PasswordBox"
                      Height="30"
-                     Margin="0 0 0 20"/>
+                     Margin="0 0 0 20" Background="#4CBBBBBB"/>
 
                 <Button Content="Войти"
                 Height="35"
-                Click="LoginButton_Click"/>
+                Click="LoginButton_Click" Background="#FF36D673" FontFamily="Verdana" FontSize="16"/>
 
             </StackPanel>
         </Grid>

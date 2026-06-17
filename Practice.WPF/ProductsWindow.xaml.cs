@@ -28,12 +28,22 @@ namespace Practice.WPF
         }
 
         private async void ProductsWindow_Loaded(
+    object sender,
+    RoutedEventArgs e)
+        {
+            var products =
+                await _apiService.GetProductsAsync();
+
+            ProductsGrid.ItemsSource = products;
+        }
+
+        private void AddButton_Click(
             object sender,
             RoutedEventArgs e)
         {
-            var products = await _apiService.GetProductsAsync();
+            var window = new AddProductWindow();
 
-            ProductsGrid.ItemsSource = products;
+            window.ShowDialog();
         }
     }
 }

@@ -23,4 +23,42 @@ public class ProductRepository
 
         return await connection.QueryAsync<Product>(sql);
     }
+
+    public async Task AddProduct(
+        string productName,
+        string description)
+    {
+        const string sql = @"
+INSERT INTO products
+(
+    product_name,
+    description,
+    category_id,
+    manufacturer_id,
+    supplier_id,
+    unit,
+    image_path
+)
+VALUES
+(
+    @ProductName,
+    @Description,
+    1,
+    1,
+    1,
+    'пара',
+    ''
+);";
+
+        using var connection =
+            _context.CreateConnection();
+
+        await connection.ExecuteAsync(
+            sql,
+            new
+            {
+                ProductName = productName,
+                Description = description
+            });
+    }
 }

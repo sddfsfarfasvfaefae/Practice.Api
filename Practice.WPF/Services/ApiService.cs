@@ -26,15 +26,43 @@ public class ApiService
             Password = password
         };
 
-        var response =
-            await _httpClient.PostAsJsonAsync(
-                "api/auth/login",
-                request);
+        var response = await _httpClient.PostAsJsonAsync(
+            "api/auth/login",
+            request);
 
         if (!response.IsSuccessStatusCode)
             return null;
 
         return await response.Content
             .ReadFromJsonAsync<LoginResponse>();
+    }
+
+    public async Task<List<Product>?> GetProductsAsync()
+    {
+        var response = await _httpClient.GetAsync(
+            "api/products");
+
+        if (!response.IsSuccessStatusCode)
+            return null;
+
+        return await response.Content
+            .ReadFromJsonAsync<List<Product>>();
+    }
+
+    public async Task<bool> AddProductAsync(
+        string productName,
+        string description)
+    {
+        var request = new
+        {
+            ProductName = productName,
+            Description = description
+        };
+        var response =
+            await _httpClient.PostAsJsonAsync(
+                "api/products",
+                request);
+
+        return response.IsSuccessStatusCode;
     }
 }

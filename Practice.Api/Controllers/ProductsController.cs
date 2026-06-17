@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Practice.Api.Models;
 using Practice.Api.Repositories;
 
 namespace Practice.Api.Controllers;
@@ -22,5 +23,15 @@ public class ProductsController : ControllerBase
             await _repository.GetAllProducts();
 
         return Ok(products);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddProduct(
+        [FromBody] CreateProductRequest request)
+    {
+        await _repository.AddProduct(
+            request.ProductName,
+            request.Description);
+        return Ok();
     }
 }

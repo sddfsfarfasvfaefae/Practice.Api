@@ -1,50 +1,52 @@
-﻿using System.Text;
+﻿using Practice.WPF.Models;
+using Practice.WPF.Services;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Practice.WPF.Services;
 
-namespace Practice.WPF;
-
-public partial class MainWindow : Window
+namespace Practice.WPF
 {
-    private readonly ApiService _apiService;
-
-    public MainWindow()
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+        private readonly ApiService _apiService;
 
-        _apiService = new ApiService();
-    }
-
-    private async void LoginButton_Click(
-        object sender,
-        RoutedEventArgs e)
-    {
-        var user = await _apiService.Login(
-            LoginBox.Text,
-            PasswordBox.Password);
-
-        if (user == null)
+        public MainWindow()
         {
-            MessageBox.Show(
-                "Неверный логин или пароль");
+            InitializeComponent();
 
-            return;
+            _apiService = new ApiService();
         }
 
-        MessageBox.Show(
-            $"Добро пожаловать!\n\n{user.FullName}\nРоль: {user.Role}");
-    }
+        private async void LoginButton_Click(
+            object sender,
+            RoutedEventArgs e)
+        {
+            var user = await _apiService.Login(
+                LoginBox.Text,
+                PasswordBox.Password);
 
-    private void LoginBox_TextChanged(object sender, TextChangedEventArgs e)
-    {
+            if (user == null)
+            {
+                MessageBox.Show(
+                    "Неверный логин или пароль");
 
+                return;
+            }
+            CurrentUser.Role = user.Role;
+
+            MessageBox.Show(
+                $"Добро пожаловать!\n\n{user.FullName}\nРоль: {user.Role}");
+
+            var productsWindow = new ProductsWindow();
+
+            productsWindow.Show();
+
+            this.Close();
+        }
+
+        private void LoginBox_TextChanged(
+            object sender,
+            TextChangedEventArgs e)
+        {
+        }
     }
 }

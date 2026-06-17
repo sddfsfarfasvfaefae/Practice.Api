@@ -1,0 +1,46 @@
+﻿<Window x:Class="Practice.WPF.ProductsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Товары"
+        Height="500"
+        Width="1000">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    Margin="10">
+
+            <Button x:Name="AddButton"
+                    Content="Добавить"
+                    Width="120"
+                    Height="30"
+                    Margin="5"
+                    Click="AddButton_Click"/>
+
+            <Button x:Name="EditButton"
+                    Content="Изменить"
+                    Width="120"
+                    Height="30"
+                    Margin="5"/>
+
+            <Button x:Name="DeleteButton"
+                    Content="Удалить"
+                    Width="120"
+                    Height="30"
+                    Margin="5"/>
+
+        </StackPanel>
+
+        <DataGrid x:Name="ProductsGrid"
+                  Grid.Row="1"
+                  Margin="10"
+                  AutoGenerateColumns="True"/>
+
+    </Grid>
+</Window>
